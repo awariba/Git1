@@ -1,0 +1,304 @@
+Configuration Managemnet Tools
+=============================
+Ansible - open source - no agentless - playbooks (vim ansible-playbook playbook1.yml)- pushbased
+chef - paid - agent   - cookbook - pull based
+puppet - paid - agent- cookbook- pull based
+
+Ansible is configration servers
+10 servers
+5 & 6 th servers
+ansible configuration ready
+1- matser
+9 - slave - 9 - ec2-servre -ssh - 22
+
+ansibe master - all the slave machine
+
+Ansible only devops - 
+ansible is written -yaml
+
+ansibe - python
+
+example
+===========
+vim ansible-playbook playbook1.yml
+fgkjl
+bkjkljkl
+back end executing
+3 servers - diff host-servers
+another node
+
+1. master
+2. slave
+
+10 server
+=========
+idempdent - it will be installing
+ansible - command
+ansible tower -is defined with UI - Click create
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Ansible - implementation:
+===================
+1.Pre-rea
+
+2 servers
+=============
+1. ACM - Ansible Client Machine
+2. Ansible Host - slave machine
+2. configuration - 2 servers
+
+Ansible configuration & installation setup - Jira, ServiceNow, IBM CLM, agile methodology, Kanban Board, GitLab
+==========================================
+user story point - 3 days - 24 hrs
+pre-Req
+AWS Account- req - portal - 1 day- immediately - 2 days
+
+1. Master
+2. slave 
+
+2 servers - existing server
+
+GitLab
+==========
+tasks
+1. ToDo - list
+2. in progress - 
+3. approval - architect they - approved
+upload document
+
+24 hrs
+
+sprint
+===========
+1- sprint 30 days
+=====================
+22 days working days
+
+sprint 
+==========
+22 days 
+1. ansible - master - slave configuration - 3 days
+19 days
+2- days - docker installtion & configuration - simple task
+
+22 day s- 7 days -2 task
+15 days
+
+3.provision with infra - ec2, vpc
+
+6 days
+
+9 days
+
+4. Kuberentes - Rolling updates - canary deployment
+ 6 days
+5. documentation - 3 days
+
+1- month sprint
+==================
+5 tasks
+1. ansible -master - 
+
+march month
+===========
+leave plan
+2 days 
+21 days
+19 days - task
+
+we present - sprint podium 
+==========
+manager and leads,architect
+documentation
+45 mintes- 1hr call
+==============
+4 people
+rolling update
+12 mintes timeprsent - shobha
+raju - 10
+sameen -15
+hussain - 5 minutes
+
+sprint retrospective
+=================
+5 task
+improments
+aws account - 4 days 
+1.ansible 
+2. slave
+
+sprint - 15 days
+================
+11 days working days
+
+
+
+Ansible Master-slave configurations
+========================
+1. Ansible master- ACM
+2. Ansible slave - Ansible host
+
+2 servers are ready
+configurations set up
+ 
+ansible-master
+==========
+1. vim /etc/ssh/sshd_config
+
+Give your root password authentication should yes
+Comment password authentication no
+
+2. passwd ec2-user
+   admin123
+   admin123
+
+3. vim /etc/sudoers
+ec2-user ALL=NOPASSWD: ALL
+
+4. systemctl restart sshd
+
+Ansible -slave:
+=============
+1. vim /etc/ssh/sshd_config
+
+Give your root password authentication should yes
+Comment password authentication no
+
+2. passwd ec2-user
+   admin123
+   admin123
+
+3. vim /etc/sudoers
+ec2-user ALL=NOPASSWD: ALL
+
+4. systemctl restart sshd
+
+Ansible-Master
+==========
+yum list | grep ansible
+yum install epel-release
+sudo amazon-linux-extras install epel
+yum list | grep ansible
+yum install ansible -y
+
+
+
+5. vim /etc/ansible/hosts
+[webservers]
+slave privateIP
+
+Open Secure Shell Connection
+============================
+1. change to ec2-user
+ su - ec2-user
+ ssh-keygen (pub & Prv)
+
+ssh key will be generated
+
+2. copy the key on host
+
+ ssh-copy-id -i ec2-user@172.31.41.150 ( directly you are connecting slave machine
+
+ssh 'ec2-user@172.31.41.150
+
+Ansible is purely working with Module
+Ansible is having 462 + modules
+git - src
+maven - artifact
+jebkins - plugins
+docker- contaoner ports
+K8S - Pods
+Ansible - module
+
+ansible is working yaml/yml
+2 wayes we need execute
+1. single-line command also called ad-hoc command
+playbook
+
+1. Module
+ping module
+ansible -m ping webservers
+
+2. command module
+uptime
+ansible -m command -a "uptime" webservers
+
+Ansible-playbook
+=================
+
+Ansible is yaml 
+ansiblewritten with playbook
+
+vim ansible-playbook playbook1.yml
+============================
+
+single task
+multiple task we are using with playbooks
+multiple playbooks - roles
+multiple roles - ansible-galaxy
+vault - store crdentials
+secrets
+
+Play-book - installing with tomcat
+================
+vim playbook1-yml
+
+---
+- hosts: webservers
+  become: true
+  become_users: root
+  tasks:
+  - name: install tomcat
+    yum: name=tomcat state=present
+  - name: start tomcat
+    service: name=tomcat state=started
+  - name: deploy war file
+    get_url:
+      url:https://tomcat.apache.org/tomcat-7.0-doc/appdev/sample/sample.war
+     dest:/usr/share/tomcat/webapps
+    notify: restart tomcat
+ handlers:
+  - name: restart tomcat
+    service: name=tomcat state=restarted
+
+validate the playbook 2 approach
+==================================
+command line
+
+1. ansible-playbook playbook1.yml --syntax-check
+
+2. yaml lint validate
+
+execution:
+ansible-playbook playbook2.yml
+
+
+
+
+
